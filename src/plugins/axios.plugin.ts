@@ -1,9 +1,8 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import axios from "axios";
 import * as humps from "humps";
-import { environment } from "../../environments/environment";
-import { StorageUtils } from "../utils";
-import { Constants } from "./index";
+import { environment } from "../environments/environment";
+import { getStorageItem } from "../utils";
 
 /**
  * Api logic base on Axios
@@ -19,8 +18,8 @@ class ApiConfig {
     this.logSuccessStyle = "color: #fff; background: green";
     this.interceptors = [];
     this.instance = axios.create({
-      timeout: 60000,
-      baseURL: environment.baseUrl,
+      timeout: environment.apiTimeOut,
+      baseURL: environment.apiBaseUrl,
     });
   }
 
@@ -221,7 +220,7 @@ class ApiConfig {
   public auth() {
     this.instance.interceptors.request.use(
       (configs) => {
-        const token = StorageUtils.getItem<string>(Constants.KEYS.accessToken);
+        const token = getStorageItem<string>(environment.storageKeys.accessToken);
         if (token) {
           configs.headers.Authorization = "Bearer " + token;
           this.log("Axios interceptors: auth request interceptor executed");
