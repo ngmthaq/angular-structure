@@ -11,7 +11,7 @@ export default [
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
   {
-    ignores: ["src/app/**.spec.ts", "src/scripts/**.script.js"],
+    ignores: ["src/app/**.spec.ts"],
     rules: {
       "no-undef": ["error"],
       "no-unused-vars": ["error"],
