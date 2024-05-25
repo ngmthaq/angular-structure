@@ -3,16 +3,11 @@
 
 const { exec } = require("child_process");
 
-const name = "page-" + process.argv[2];
-const route = process.argv[3];
-const ngModule = process.argv[4];
+const name = "app-" + process.argv[2];
+const ngModule = process.argv[3];
 const fullName = ngModule ? ngModule + "/" + name : name;
 
-const commands = [
-  `ng g m ${fullName} --module=${ngModule || "app"} --routing=true --routing-scope=Child --route=${route || ""}`,
-  `ng g c ${fullName}`,
-  `npm run format`,
-];
+const commands = [`ng g m ${fullName}`, `npm run format`];
 
 exec(commands.join(" && "), (err, stdout, stderr) => {
   if (err) {

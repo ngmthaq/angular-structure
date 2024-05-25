@@ -20,9 +20,6 @@ export function isDateValidWithFormat(
   return dayjs(date, format, true).isValid();
 }
 
-export function getDateTimeWithFormat(
-  date: string,
-  format: string = DATE_FORMATS["DD/MM/YYYY"],
-): string {
+export function formatDateTime(date: string, format: string = DATE_FORMATS["DD/MM/YYYY"]): string {
   return dayjs(date).format(format);
 }

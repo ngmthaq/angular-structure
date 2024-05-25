@@ -1,11 +1,14 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-// Lazy load routes
 const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./page-home/page-home.module").then((m) => m.PageHomeModule),
+  },
+  {
+    path: "about",
+    loadChildren: () => import("./page-about/page-about.module").then((m) => m.PageAboutModule),
   },
   {
     path: "**",
