@@ -7,7 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrl: "./page-home.component.scss",
 })
 export class PageHomeComponent {
-  public param = { value: "Thang" };
+  param = { value: "Thang" };
 
-  public constructor(public translate: TranslateService) {}
+  constructor(public translate: TranslateService) {}
 }

@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import("./page-about/page-about.module").then((m) => m.PageAboutModule),
   },
   {
+    path: "contact",
+    loadChildren: () =>
+      import("./page-contact/page-contact.module").then((m) => m.PageContactModule),
+  },
+  {
     path: "**",
     loadChildren: () =>
       import("./page-not-found/page-not-found.module").then((m) => m.PageNotFoundModule),
