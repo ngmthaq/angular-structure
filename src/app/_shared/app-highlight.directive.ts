@@ -4,7 +4,7 @@ import { Directive, ElementRef } from "@angular/core";
   selector: "[appAppHighlight]",
 })
 export class AppHighlightDirective {
-  public constructor(public elementRef: ElementRef) {
+  constructor(public elementRef: ElementRef) {
     elementRef.nativeElement.style.background = "red";
   }
 }
