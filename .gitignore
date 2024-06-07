@@ -44,3 +44,7 @@ Thumbs.db
 
 # Env
 /src/environments/environment.private.ts
+
+# Server
+/server/public/**/*
+!/server/public/**/.gitkeep

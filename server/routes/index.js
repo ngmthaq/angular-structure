@@ -1,6 +1,11 @@
-const createHistoryRouter = (app) => {
+/**
+ * Create Router For BOT
+ *
+ * @param {import('express').Express} app
+ */
+function createRouter(app) {
   app.use("/", require("./home"));
-};
+}
 
-module.exports = createHistoryRouter;
+module.exports = createRouter;
 

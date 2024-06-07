@@ -1,46 +1,54 @@
 #!/usr/bin/env node
 
 // Module dependencies
-const createHistoryRouter = require("../routes");
+const createRouter = require("../routes");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const debug = require("debug")("server");
-const http = require("http");
-const createError = require("http-errors");
-const path = require("path");
+const http = require("node:http");
+const path = require("node:path");
+const fs = require("node:fs/promises");
 const app = express();
 
 // View engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+app.set("views", path.resolve(__dirname, "../views"));
+app.set("view engine", "ejs");
 
 // Middlewares
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use("public", express.static(path.resolve(__dirname, "../public")));
 
-// Router
-createHistoryRouter(app);
+// Create router
+createRouter(app);
 
-// Catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+// Load angular bundle files
+app.use(express.static(path.resolve(__dirname, "../../dist/browser")));
+
+// Render angular bundle files
+app.use("*", async function (req, res, next) {
+  try {
+    const html = await fs.readFile(path.resolve(__dirname, "../../dist/browser/index.html"));
+    res.set("Content-Type", "text/html");
+    return res.send(html);
+  } catch (error) {
+    next(error);
+  }
 });
 
 // Error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  console.error(err);
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);
-  res.json({ error: err });
+  return res.json({ error: err });
 });
 
 // Get port from environment and store in Express
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort("3000");
 app.set("port", port);
 
 // Create HTTP server.
@@ -60,7 +68,6 @@ function normalizePort(val) {
 }
 
 // Event listener for HTTP server "error" event
-// Handle specific listen errors with friendly messages
 function onError(error) {
   if (error.syscall !== "listen") throw error;
   const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
@@ -82,5 +89,5 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  debug("Listening on " + bind);
+  console.log("Listening on " + bind);
 }

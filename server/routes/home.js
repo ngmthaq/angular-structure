@@ -1,9 +1,11 @@
 const express = require("express");
+const isHuman = require("../middlewares/isHuman");
 const router = express.Router();
 
-/* GET home page. */
+router.use(isHuman);
+
 router.get("/", function (req, res, next) {
-  res.json({ title: "Express" });
+  return res.render("home");
 });
 
 module.exports = router;
