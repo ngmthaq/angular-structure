@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["devkit", "postng", "tailwindcss", "tseslint", "whitesmoke"]
+  "cSpell.words": [
+    "devkit",
+    "postng",
+    "tailwindcss",
+    "tsconfigs",
+    "tseslint",
+    "whitesmoke"
+  ]
 }

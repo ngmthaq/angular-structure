@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const { exec } = require("child_process");
 
 const name = "app-" + process.argv[2];

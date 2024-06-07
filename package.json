@@ -2,11 +2,10 @@
   "name": "angular-structure",
   "version": "0.0.0",
   "scripts": {
-    "postng": "npm run format",
     "ng": "ng",
-    "ng:c": "node ./src/scripts/generate-component.script.js",
-    "ng:p": "node ./src/scripts/generate-page.script.js",
-    "ng:m": "node ./src/scripts/generate-module.script.js",
+    "ng:c": "node ./scripts/generate-component.script.js",
+    "ng:p": "node ./scripts/generate-page.script.js",
+    "ng:m": "node ./scripts/generate-module.script.js",
     "ng:env": "cp ./src/environments/environment.private.example.ts ./src/environments/environment.private.ts",
     "dev": "ng serve",
     "build": "ng build",
@@ -14,7 +13,8 @@
     "test:unit": "ng test",
     "test:e2e": "ng e2e",
     "format": "prettier . --write",
-    "lint": "prettier . --check && eslint ."
+    "lint": "prettier . --check && eslint .",
+    "node:start": ""
   },
   "private": true,
   "dependencies": {
@@ -35,7 +35,13 @@
     "localforage": "^1.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.14.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.7",

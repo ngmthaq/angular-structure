@@ -5,13 +5,15 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default [
+  {
+    ignores: ["src/app/**.spec.ts", "server/**/*", "scripts/**/*", "dist/**/*"],
+  },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
   {
-    ignores: ["src/app/**.spec.ts"],
     rules: {
       "no-undef": ["error"],
       "no-unused-vars": ["error"],
