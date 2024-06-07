@@ -7,14 +7,14 @@
     "ng:p": "node ./scripts/generate-page.script.js",
     "ng:m": "node ./scripts/generate-module.script.js",
     "ng:env": "cp ./src/environments/environment.private.example.ts ./src/environments/environment.private.ts",
-    "dev": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "ng:dev": "ng serve",
+    "ng:build": "ng build",
+    "ng:watch": "ng build --watch --configuration development",
     "test:unit": "ng test",
     "test:e2e": "ng e2e",
+    "node:start": "node ./server/bin/www",
     "format": "prettier . --write",
-    "lint": "prettier . --check && eslint .",
-    "node:start": ""
+    "lint": "prettier . --check && eslint ."
   },
   "private": true,
   "dependencies": {
