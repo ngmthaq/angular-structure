@@ -13,8 +13,9 @@
     "ng:watch": "ng build --watch --configuration development",
     "test:unit": "ng test",
     "test:e2e": "ng e2e",
-    "node:start": "node ./server/bin/app.js",
-    "node:watch": "nodemon --watch dist --watch server server/bin/app.js",
+    "node:start": "cross-env NODE_ENV=production node ./server/bin/app.js",
+    "node:watch": "cross-env NODE_ENV=development nodemon --watch dist --watch server server/bin/app.js",
+    "node:env": "cp ./server/.env.example ./server/.env",
     "convention:fix": "prettier . --write",
     "convention:lint": "prettier . --check && eslint src && eslint e2e/tests",
     "prepare": "husky"
@@ -35,8 +36,10 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "axios": "^1.6.8",
     "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.3",
     "dayjs": "^1.11.11",
     "debug": "~2.6.9",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
@@ -84,4 +87,3 @@
     "node": ">=20.11.1"
   }
 }
-

@@ -8,7 +8,11 @@ const logger = require("morgan");
 const http = require("node:http");
 const path = require("node:path");
 const fs = require("node:fs/promises");
+const env = require("dotenv");
 const app = express();
+
+// Load .env file
+env.config({ path: path.resolve(__dirname, "../.env") });
 
 // View engine setup
 app.set("views", path.resolve(__dirname, "../views"));
@@ -20,6 +24,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("public", express.static(path.resolve(__dirname, "../public")));
+
+// Redirect http -> https
+app.use((req, res, next) => {
+  if (
+    req.protocol === "http" &&
+    process.env.NODE_ENV === "production" &&
+    process.env.ENABLE_HTTPS === "true"
+  ) {
+    res.redirect(301, `https://${req.headers.host}${req.url}`);
+  }
+  next();
+});
 
 // Create router
 createRouter(app);
@@ -48,7 +64,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Get port from environment and store in Express
-const port = normalizePort("3000");
+const port = normalizePort(process.env.APP_PORT || "3000");
 app.set("port", port);
 
 // Create HTTP server.
@@ -88,6 +104,9 @@ function onError(error) {
 // Event listener for HTTP server "listening" event
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  const bind = typeof addr === "string" ? "pipe: " + addr : "port: " + addr.port;
   console.log("Listening on " + bind);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`Development server: http://127.0.0.1:${addr.port}`);
+  }
 }
