@@ -16,7 +16,7 @@
     "node:start": "node ./server/bin/app.js",
     "node:watch": "nodemon --watch dist --watch server server/bin/app.js",
     "convention:fix": "prettier . --write",
-    "convention:lint": "prettier . --check && eslint src",
+    "convention:lint": "prettier . --check && eslint src && eslint e2e/tests",
     "prepare": "husky"
   },
   "lint-staged": {
