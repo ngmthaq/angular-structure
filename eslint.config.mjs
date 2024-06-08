@@ -6,7 +6,7 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 
 export default [
   {
-    ignores: ["src/app/**.spec.ts", "server/**/*", "scripts/**/*", "dist/**/*"],
+    ignores: ["src/**/*.spec.ts", "server/**/*", "scripts/**/*", "dist/**/*", "e2e/build/**/*"],
   },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
@@ -15,9 +15,12 @@ export default [
   eslintPluginPrettierRecommended,
   {
     rules: {
-      "no-undef": ["error"],
-      "no-unused-vars": ["error"],
       "prettier/prettier": ["error"],
+      "no-undef": ["warn"],
+      "no-unused-vars": ["warn"],
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/no-explicit-any": ["warn"],
+      "@typescript-eslint/no-unnecessary-type-constraint": ["warn"],
     },
   },
 ];

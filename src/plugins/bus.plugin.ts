@@ -1,4 +1,4 @@
-type Callback<T> = (params: T) => void;
+type Callback<T> = (_: T) => void;
 
 class EventBusConfig {
   private events: Record<string, Callback<any>[]> = {};

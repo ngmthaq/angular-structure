@@ -29,7 +29,7 @@ export function removeCookieItem(key: string, options?: CookieAttributes): boole
 
 export function getCookieItem<T>(key: string): T | null {
   try {
-    let json = CookieJs.get(key);
+    const json = CookieJs.get(key);
     if (!json) {
       console.log(
         `%c >>> CookieJs: get item "${key}" value:`,
