@@ -8,12 +8,17 @@ let page: puppeteer.Page;
 
 export function setupBrowserHooks(path = ""): void {
   before(async () => {
-    browser = await puppeteer.launch({ headless: false, devtools: true, slowMo: 100 });
+    browser = await puppeteer.launch({
+      headless: false,
+      devtools: false,
+      slowMo: 250,
+      defaultViewport: null,
+      args: ["--start-maximized"],
+    });
   });
 
   beforeEach(async () => {
     page = await browser.newPage();
-    await page.setViewport({ width: 1366, height: 768 });
     await page.goto(`${baseUrl}${path}`);
   });
 
