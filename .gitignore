@@ -48,3 +48,7 @@ Thumbs.db
 # Server
 /server/public/**/*
 !/server/public/**/.gitkeep
+
+# Cert
+/.cert/**/*
+!/.cert/**/.gitkeep
