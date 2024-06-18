@@ -7,6 +7,7 @@
     "ng:c": "node ./scripts/generate-component.script.js",
     "ng:p": "node ./scripts/generate-page.script.js",
     "ng:m": "node ./scripts/generate-module.script.js",
+    "ng:l": "node ./scripts/generate-layout.script.js",
     "ng:env": "cp ./src/environments/environment.private.example.ts ./src/environments/environment.private.ts",
     "ng:dev": "ng serve",
     "ng:build": "ng build",

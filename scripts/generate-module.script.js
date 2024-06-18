@@ -4,7 +4,7 @@ const name = "app-" + process.argv[2];
 const ngModule = process.argv[3];
 const fullName = ngModule ? ngModule + "/" + name : name;
 
-const commands = [`ng g m ${fullName}`, `npm run format`];
+const commands = [`ng g m ${fullName}`, `npm run convention:fix`];
 
 exec(commands.join(" && "), (err, stdout, stderr) => {
   if (err) {
