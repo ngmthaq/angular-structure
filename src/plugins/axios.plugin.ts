@@ -43,13 +43,13 @@ class ApiConfig {
       params,
       data,
     };
-    console.log(`>>> Axios request: [${method.toUpperCase()}] ${url}`);
+    console.log(`Axios request: [${method.toUpperCase()}] ${url}`);
     this.clear();
     this.default();
     this.interceptors.forEach((interceptor) => this[interceptor]());
     this.interceptors = [];
     const response = await this.instance.request(requestConfigs);
-    console.log(`>>> Axios response: [${method.toUpperCase()}] ${url}`, response);
+    console.log(`Axios response: [${method.toUpperCase()}] ${url}`, response);
     return response;
   }
 
@@ -163,14 +163,14 @@ class ApiConfig {
   public default() {
     this.instance.interceptors.request.use(
       (configs) => {
-        console.log(">>> Axios interceptors: default request interceptor executed");
+        console.log("Axios interceptors: default request interceptor executed");
         return configs;
       },
       (error) => Promise.reject(error),
     );
     this.instance.interceptors.response.use(
       (response) => {
-        console.log(">>> Axios interceptors: default response interceptor executed");
+        console.log("Axios interceptors: default response interceptor executed");
         return response;
       },
       (error) => Promise.reject(error),
@@ -186,7 +186,7 @@ class ApiConfig {
   public toCamel() {
     this.instance.interceptors.response.use(
       (response) => {
-        console.log(">>> Axios interceptors: toCamel response interceptor executed");
+        console.log("Axios interceptors: toCamel response interceptor executed");
         if (typeof response.data === "object") response.data = humps.camelizeKeys(response.data);
         return response;
       },
@@ -206,9 +206,9 @@ class ApiConfig {
         const token = getStorageItem<string>(environment.storageKeys.accessToken);
         if (token) {
           configs.headers.Authorization = "Bearer " + token;
-          console.log(">>> Axios interceptors: auth request interceptor executed");
+          console.log("Axios interceptors: auth request interceptor executed");
         } else {
-          console.log(">>> Axios interceptors: auth request interceptor can not found accessToken");
+          console.log("Axios interceptors: auth request interceptor can not found accessToken");
         }
         return configs;
       },

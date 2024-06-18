@@ -4,7 +4,7 @@ export function setCookieItem(key: string, value: any, options?: CookieAttribute
   try {
     const data = { value };
     CookieJs.set(key, JSON.stringify(data), options);
-    console.log(`>>> CookieJs: set item "${key}" with value:`, value);
+    console.log(`CookieJs: set item "${key}" with value:`, value);
     return true;
   } catch (error) {
     console.error(error);
@@ -15,7 +15,7 @@ export function setCookieItem(key: string, value: any, options?: CookieAttribute
 export function removeCookieItem(key: string, options?: CookieAttributes): boolean {
   try {
     CookieJs.remove(key, options);
-    console.log(`>>> CookieJs: remove item "${key}"`);
+    console.log(`CookieJs: remove item "${key}"`);
     return true;
   } catch (error) {
     console.error(error);
@@ -27,15 +27,15 @@ export function getCookieItem<T>(key: string): T | null {
   try {
     const json = CookieJs.get(key);
     if (!json) {
-      console.log(`>>> CookieJs: get item "${key}" value:`, null);
+      console.log(`CookieJs: get item "${key}" value:`, null);
       return null;
     }
     const data = JSON.parse(json) as any;
-    console.log(`>>> CookieJs: get item "${key}" value:`, data.value);
+    console.log(`CookieJs: get item "${key}" value:`, data.value);
     return data.value as T;
   } catch (error) {
     console.error(error);
-    console.log(`>>> CookieJs: get item "${key}" value:`, null);
+    console.log(`CookieJs: get item "${key}" value:`, null);
     return null;
   }
 }

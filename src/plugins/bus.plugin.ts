@@ -21,11 +21,11 @@ class EventBusConfig {
 
   public emit<T>(eventName: string, params?: T) {
     const message = `event "${eventName}" emitted with params:`;
-    console.log(`>>> EventBus: ${message}`, params);
+    console.log(`EventBus: ${message}`, params);
     if (this.events[eventName]) {
       this.events[eventName].forEach((callback) => {
         console.log(
-          `>>> EventBus: detected listener "${callback.name || "no-name"}" for "${eventName}" event`,
+          `EventBus: detected listener "${callback.name || "no-name"}" for "${eventName}" event`,
         );
         callback(params);
       });
