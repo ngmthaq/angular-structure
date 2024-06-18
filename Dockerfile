@@ -16,11 +16,8 @@ RUN yarn install
 # Copy the rest of project files into this image
 COPY . .
 
-# Build angular application
-RUN yarn ng:build
-
 # Expose application port
 EXPOSE 3000
 
 # Start the application
-CMD yarn node:start
+CMD yarn start
