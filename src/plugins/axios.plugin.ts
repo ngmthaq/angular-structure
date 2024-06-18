@@ -8,28 +8,15 @@ import { getStorageItem } from "../utils";
  * Api logic base on Axios
  */
 class ApiConfig {
-  protected logStyle: string;
-  protected logSuccessStyle: string;
   protected interceptors: Interceptors[];
   protected instance: AxiosInstance;
 
   public constructor() {
-    this.logStyle = "color: #671ddf; background: #fff";
-    this.logSuccessStyle = "color: #fff; background: green";
     this.interceptors = [];
     this.instance = axios.create({
       timeout: environment.apiTimeOut,
       baseURL: environment.apiBaseUrl,
     });
-  }
-
-  /**
-   * Log message
-   *
-   * @param message
-   */
-  protected log(message: string) {
-    console.log(`%c >>> ${message}`, this.logStyle);
   }
 
   /**
@@ -56,17 +43,13 @@ class ApiConfig {
       params,
       data,
     };
-    this.log(`Axios request: [${method.toUpperCase()}] ${url}`);
+    console.log(`>>> Axios request: [${method.toUpperCase()}] ${url}`);
     this.clear();
     this.default();
     this.interceptors.forEach((interceptor) => this[interceptor]());
     this.interceptors = [];
     const response = await this.instance.request(requestConfigs);
-    console.log(
-      `%c >>> Axios response: [${method.toUpperCase()}] ${url}`,
-      this.logSuccessStyle,
-      response,
-    );
+    console.log(`>>> Axios response: [${method.toUpperCase()}] ${url}`, response);
     return response;
   }
 
@@ -180,14 +163,14 @@ class ApiConfig {
   public default() {
     this.instance.interceptors.request.use(
       (configs) => {
-        this.log("Axios interceptors: default request interceptor executed");
+        console.log(">>> Axios interceptors: default request interceptor executed");
         return configs;
       },
       (error) => Promise.reject(error),
     );
     this.instance.interceptors.response.use(
       (response) => {
-        this.log("Axios interceptors: default response interceptor executed");
+        console.log(">>> Axios interceptors: default response interceptor executed");
         return response;
       },
       (error) => Promise.reject(error),
@@ -203,7 +186,7 @@ class ApiConfig {
   public toCamel() {
     this.instance.interceptors.response.use(
       (response) => {
-        this.log("Axios interceptors: toCamel response interceptor executed");
+        console.log(">>> Axios interceptors: toCamel response interceptor executed");
         if (typeof response.data === "object") response.data = humps.camelizeKeys(response.data);
         return response;
       },
@@ -223,9 +206,9 @@ class ApiConfig {
         const token = getStorageItem<string>(environment.storageKeys.accessToken);
         if (token) {
           configs.headers.Authorization = "Bearer " + token;
-          this.log("Axios interceptors: auth request interceptor executed");
+          console.log(">>> Axios interceptors: auth request interceptor executed");
         } else {
-          this.log("Axios interceptors: auth request interceptor can not found accessToken");
+          console.log(">>> Axios interceptors: auth request interceptor can not found accessToken");
         }
         return configs;
       },

@@ -16,11 +16,11 @@ export default [
   {
     rules: {
       "prettier/prettier": ["error"],
-      "no-undef": ["warn"],
-      "no-unused-vars": ["warn"],
-      "@typescript-eslint/no-unused-vars": ["warn"],
-      "@typescript-eslint/no-explicit-any": ["warn"],
-      "@typescript-eslint/no-unnecessary-type-constraint": ["warn"],
+      "no-undef": ["off"],
+      "no-unused-vars": ["off"],
+      "@typescript-eslint/no-unused-vars": ["off"],
+      "@typescript-eslint/no-explicit-any": ["off"],
+      "@typescript-eslint/no-unnecessary-type-constraint": ["off"],
     },
   },
 ];

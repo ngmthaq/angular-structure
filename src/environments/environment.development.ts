@@ -3,6 +3,7 @@ import { environment as privateEnvironment } from "./environment.private";
 export const environment = {
   ...privateEnvironment,
   env: "development",
+  enableLog: true,
   appPaths: {},
   apiEndpoints: {},
   storageKeys: {
