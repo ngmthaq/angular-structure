@@ -9,9 +9,9 @@ let page: puppeteer.Page;
 export function setupBrowserHooks(path = ""): void {
   before(async () => {
     browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       devtools: false,
-      slowMo: 250,
+      slowMo: 0,
       defaultViewport: null,
       args: ["--start-maximized"],
     });
