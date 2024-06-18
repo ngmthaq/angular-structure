@@ -12,17 +12,18 @@
     "ng:dev": "ng serve",
     "ng:build": "ng build",
     "ng:watch": "ng build --watch --configuration development",
-    "test:unit": "ng test",
+    "test:unit": "ng test --watch=false --browsers=ChromeHeadless",
     "test:e2e": "ng e2e",
     "node:start": "cross-env NODE_ENV=production node ./server/bin/app.js",
     "node:watch": "cross-env NODE_ENV=development nodemon --watch dist --watch server server/bin/app.js",
     "node:env": "cp ./server/.env.example ./server/.env",
     "convention:fix": "prettier . --write",
     "convention:lint": "prettier . --check && eslint src && eslint e2e/tests",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "npm run convention:lint"
   },
   "lint-staged": {
-    "**/*": "npm run convention:lint"
+    "**/*": "npm run lint-staged"
   },
   "dependencies": {
     "@angular/animations": "^17.3.0",
