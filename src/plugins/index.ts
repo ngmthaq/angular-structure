@@ -1,2 +1,2 @@
-export * from "./axios.plugin";
+export * from "./api.plugin";
 export * from "./bus.plugin";

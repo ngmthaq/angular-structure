@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { LayoutBaseComponent } from "./layout-base.component";
+import { AppCommonModule } from "../app-common/app-common.module";
 
 @NgModule({
   declarations: [LayoutBaseComponent],
-  imports: [CommonModule],
+  imports: [AppCommonModule],
   exports: [LayoutBaseComponent],
 })
 export class LayoutBaseModule {}

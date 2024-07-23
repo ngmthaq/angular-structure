@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { ComponentCircularLoadingComponent } from "./component-circular-loading.component";
+import { AppCommonModule } from "../app-common/app-common.module";
 
 @NgModule({
   declarations: [ComponentCircularLoadingComponent],
-  imports: [CommonModule],
+  imports: [AppCommonModule],
   exports: [ComponentCircularLoadingComponent],
 })
 export class ComponentCircularLoadingModule {}

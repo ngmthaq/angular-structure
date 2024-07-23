@@ -1,3 +1,1 @@
-import { AppAuthService } from "./app-auth.service";
-
-export { AppAuthService };
+export * from "./app-auth.service";

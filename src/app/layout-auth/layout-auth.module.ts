@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { LayoutAuthComponent } from "./layout-auth.component";
+import { AppCommonModule } from "../app-common/app-common.module";
 
 @NgModule({
   declarations: [LayoutAuthComponent],
-  imports: [CommonModule],
+  imports: [AppCommonModule],
   exports: [LayoutAuthComponent],
 })
 export class LayoutAuthModule {}
