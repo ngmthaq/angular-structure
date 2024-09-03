@@ -18,20 +18,20 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "client",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "index": "client/index.html",
+            "browser": "client/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "./configs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "src/tailwind.css"],
+            "assets": ["client/favicon.ico", "client/assets"],
+            "styles": ["client/styles.scss", "client/tailwind.css"],
             "scripts": [],
             "allowedCommonJsDependencies": ["dayjs", "localforage"]
           },
@@ -57,8 +57,8 @@
               "sourceMap": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
+                  "replace": "client/environments/environment.ts",
+                  "with": "client/environments/environment.development.ts"
                 }
               ]
             }
@@ -89,8 +89,8 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "./configs/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": ["client/favicon.ico", "client/assets"],
+            "styles": ["client/styles.scss"],
             "scripts": []
           }
         },

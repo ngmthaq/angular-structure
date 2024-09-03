@@ -6,7 +6,7 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 
 export default [
   {
-    ignores: ["src/**/*.spec.ts", "server/**/*", "scripts/**/*", "dist/**/*", "e2e/build/**/*"],
+    ignores: ["client/**/*.spec.ts", "server/**/*", "scripts/**/*", "dist/**/*", "e2e/build/**/*"],
   },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
