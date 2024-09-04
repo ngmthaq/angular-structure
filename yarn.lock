@@ -1668,6 +1668,11 @@
   dependencies:
     call-bind "^1.0.7"
 
+"@lottiefiles/dotlottie-web@^0.32.0":
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-web/-/dotlottie-web-0.32.0.tgz#e19ae089f4ff122cc4977aaedb8bb75bcaf2d21d"
+  integrity sha512-uzVg66pQWVf3vUF8r0O14FBMH3RvrxltLtdngNqpD3komjsC22zDsIPug/C+GuudD5tGhj3SFrPqelV1fW6kJQ==
+
 "@ngtools/webpack@17.3.8":
   version "17.3.8"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-17.3.8.tgz#96c0f99055910dd21438d7697d625fdeb7261015"
